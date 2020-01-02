@@ -45,11 +45,12 @@
         <java_source_version>1.8</java_source_version>
         <java_target_version>1.8</java_target_version>
         <file_encoding>UTF-8</file_encoding>
-
-        <project.dobbo.version>2.6.2</project.dobbo.version>
+        <dubbo.version>2.7.4.1</dubbo.version>
+        <springboot.version>2.1.4.RELEASE</springboot.version>
     </properties>
 
     <modules>
+        <module>dubbo-demo-api</module>
         <module>dubbo-demo-provider</module>
         <module>dubbo-demo-consumer</module>
     </modules>
@@ -58,25 +59,42 @@
         <dependencies>
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo-bom</artifactId>
-                <version>${project.dobbo.version}</version>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${springboot.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-metadata-report-zookeeper</artifactId>
-                <version>${project.dobbo.version}</version>
+                <version>${dubbo.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.larkersos</groupId>
                 <artifactId>dubbo-demo-api</artifactId>
                 <version>1.0-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>5.1.8.RELEASE</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
