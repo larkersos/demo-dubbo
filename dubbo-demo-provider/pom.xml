@@ -11,6 +11,7 @@
 
     <artifactId>dubbo-demo-provider</artifactId>
     <version>1.0.0</version>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!-- 导入Dubbo jar包 -->
@@ -34,9 +35,28 @@
             <artifactId>dubbo-demo-api</artifactId>
         </dependency>
 
+        <!-- zookeeper -->
         <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
         </dependency>
 
     </dependencies>
@@ -44,8 +64,26 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <skip>true</skip>
+                    <encoding>UTF-8</encoding>
+                    <compilerArguments>
+                        <extdirs>${project.basedir}/src/main/resources/lib</extdirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <mainClass>com.larkersos.dubbo.demo.provider.ProviderApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!--<parent>-->
-        <!--<groupId>com.larkersos</groupId>-->
-        <!--<artifactId>dubbo-demo-xml</artifactId>-->
-        <!--<version>${revision}</version>-->
-    <!--</parent>-->
+    <parent>
+        <groupId>com.larkersos</groupId>
+        <artifactId>dubbo-demo</artifactId>
+        <version>1.0.0</version>
+    </parent>
 
     <groupId>com.larkersos</groupId>
     <artifactId>dubbo-demo-consumer</artifactId>
@@ -17,19 +17,8 @@
     <dependencies>
         <!-- 导入Dubbo jar包 -->
         <dependency>
-            <groupId>com.alibaba</groupId>
+            <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
-            <version>2.6.2</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
 
@@ -43,6 +32,25 @@
             <artifactId>spring-context</artifactId>
             <version>5.1.8.RELEASE</version>
         </dependency>
+
+
+
+        <!-- zookeeper -->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+        </dependency>
+
+
     </dependencies>
 
 </project>
